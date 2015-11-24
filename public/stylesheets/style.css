@@ -1,0 +1,27 @@
+#schedule {
+  overflow: hidden; }
+  #schedule .schedule-table td {
+    width: 7.69231%; }
+  #schedule .schedule-table .schedule-times {
+    text-align: center; }
+    #schedule .schedule-table .schedule-times td {
+      border: 1px solid #ddd; }
+  #schedule .schedule-table .schedule-events {
+    height: 6em; }
+    #schedule .schedule-table .schedule-events .event {
+      text-align: center;
+      border: 1px solid #ddd; }
+      #schedule .schedule-table .schedule-events .event .event-header {
+        font-weight: bold; }
+
+#hotel .hotel-name {
+  font-weight: bold; }
+
+#hotel .show-on-map {
+  float: right; }
+
+#add-activities .row {
+  margin: 15px 0; }
+
+#add-activities select {
+  width: 100%; }

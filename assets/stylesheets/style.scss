@@ -1,0 +1,53 @@
+#schedule {
+  overflow: hidden;
+  .schedule-table {
+    td {
+      width: 100%*(1/13);
+    }
+
+    .schedule-times {
+      text-align: center;
+      
+        td {
+          border: 1px solid #ddd;
+        } 
+      }
+
+    .schedule-events {
+      height: 6em;
+
+      .event {
+          text-align: center;
+          border: 1px solid #ddd;
+
+        .event-header {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+#hotel {
+  .hotel-name {
+    font-weight: bold;
+  }
+
+  .hotel-address {
+
+  }
+
+  .show-on-map {
+    float: right;
+  }
+}
+
+#add-activities {
+  .row {
+    margin: 15px 0;
+  }
+
+  select {
+    width: 100%;
+  }
+}
