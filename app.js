@@ -1,9 +1,9 @@
 var express = require('express'),
-    sass = require('node-sass-middleware'),
     swig = require('swig'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
-    routes = require('./routes');
+    routes = require('./routes'),
+    model = require('./models');
 
 var app = express();
 
@@ -16,17 +16,15 @@ app.use(morgan('dev'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use( sass( {
-  src: __dirname + '/assets',
-  dest: __dirname + '/public',
-  debug: true,
-}));
+
 app.use(express.static(__dirname + '/public'));
+app.use("/bootstrap", express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use("/jquery", express.static(__dirname + '/node_modules/jquery/dist'));
+
+
 
 app.listen(3000, function(err){
   console.log('Listening to port 3000');
 });
 
-app.get('/', function( req, res, next ) {
-  res.render( 'layout' );
-} );
+app.use('/', routes);

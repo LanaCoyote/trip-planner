@@ -38,7 +38,6 @@
   }
 
   .show-on-map {
-    float: right;
   }
 }
 
@@ -50,4 +49,13 @@
   select {
     width: 100%;
   }
+  .submit-button{
+    float:right;
+    margin: 0 30px;
+  }
+}
+#map{
+  display: block;
+  height: 500px;
+  width: 100%;
 }

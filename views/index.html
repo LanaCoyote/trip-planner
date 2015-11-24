@@ -1,0 +1,210 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div id="day" class="row">
+          <div class="col-sm-1 text-center day-nav">
+          <a href="#" aria-label='Previous Day' style="vertical-align:middle;">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden='true'></span>
+          </a>
+          </div>
+      <div class="col-sm-10">
+      <div id="schedule" class="col-lg-8 col-md-9 col-sm-12">
+          <div class='panel panel-default'>
+            <div class='panel-heading day-header'>Day 1</div>
+            <table class='table schedule-table'>
+              <tr class='schedule-times'>
+                <td>8:00 AM</td>
+                <td>9:00 AM</td>
+                <td>10:00 AM</td>
+                <td>11:00 AM</td>
+                <td>12:00 PM</td>
+                <td>1:00 PM</td>
+                <td>2:00 PM</td>
+                <td>3:00 PM</td>
+                <td>4:00 PM</td>
+                <td>5:00 PM</td>
+                <td>6:00 PM</td>
+                <td>7:00 PM</td>
+                <td>8:00 PM</td>
+              </tr>
+
+              <tr class='schedule-events'>
+                <td colspan="2"></td>
+                <td class="event btn-primary" colspan="2">
+                  <div class="event-header">Brunch</div>
+                  <div>Some Restaurant</div>
+                  <div>10:00 AM - 12:00 PM</div>
+                </td>
+                <td></td>
+                <td class="event btn-warning" colspan="3">
+                  <div class="event-header">Statue of Liberty Tour</div>
+                  <div>Statue of Liberty</div>
+                  <div>1:00 PM - 4:00 PM</div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+        </div>
+      </div>
+
+      <div id="hotel" class="col-lg-4 col-md-3 col-sm-12">
+            <div class="panel panel-default">
+              <div class="panel-heading hotel-header">
+                Your Hotel
+              </div>
+
+              <div class="panel-body">
+                <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                  <div class="hotel-name">The Ritz</div>
+                  <div class="hotel-address">Somewhere, NY</div>
+                </div>
+                <div class="col-lg-6 col-sm-12 show-on-map">
+                  <a href="#" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden='true'></span>
+                    Show on Map
+                  </a>
+                </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-sm-1 text-center day-nav">
+        <a href="#" aria-label='Next Day' style="vertical-align:middle;">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden='true'></span>
+        </a>
+      </div>
+    </div>
+
+    <hr>
+
+    <div id="info" class="row">
+      <div class="col-lg-8 col-md-6 col-sm-12">
+          <div id="map"></div>
+      </div>
+
+      <div id="add-activities" class="col-lg-4 col-md-6 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading activity-header">Add Activites</div>
+          <ul class= "nav nav-tabs">
+            <li class="active"><a href="#">Hotel</a></li>
+            <li><a href="#">Restaurants</a></li>
+            <li><a href="#">Activities</a></li>
+          </ul>
+          <div class="panel-body">
+            <form>
+              <div class="row" id="hotel-row">
+              <div class="col-sm-3">
+                <label for="hotel-dropdown">Hotels:</label>
+              </div>
+              <div class="col-sm-9">
+              <select id="hotel-dropdown">
+                {% for hotel in hotels %}
+                <option value="{{hotel._id.toString()}}">{{ hotel.name }}</option>
+                {% endfor %}
+              </select>
+              </div>
+
+              </div>
+
+              <div class="row" id="restaurant-row" hidden>
+              <div class="col-sm-3">
+              <label for="restaurant-dropdown">Restaurants:</label>
+              </div>
+              <div class="col-sm-9">
+              <select id="restaurant-dropdown">
+                {% for restaurant in restaurants %}}
+                <option value="{{restaurant._id.toString()}}">{{restaurant.name}}</option>
+                {% endfor %}
+              </select>
+              </div>
+              </div>
+              
+              <div class="row" id="activities-row" hidden>
+                <div class="col-sm-3">
+                <label for="activity-dropdown">Activities:</label>
+                </div>
+                <div class="col-sm-9">
+                <select id="activity-dropdown">
+                  {% for activity in activities %}
+                  <option value="{{activity._id.toString()}}">{{activity.name}}</option>
+                  {% endfor %}
+                </select>
+                </div>
+              </div>
+
+              <div class="row" id="start-time-row" hidden>
+                <div class="col-sm-3">
+                        <label for="start_time">Start Time:</label>
+                </div>
+                <div class="col-sm-9">
+                <select id="start-time-dropdown">
+                  <option value="tenAM">10:00AM</option>
+                  <option value="ten30AM">10:30AM</option>
+                </select>              </div>
+              </div>
+              <div class="row" id= "end-time-row" hidden>
+                <div class="col-sm-3">
+                        <label for="end_time">End Time:</label>
+                </div>
+                <div class="col-sm-9">
+                <select id="end-time-dropdown">
+                  <option value="tenAM">10:00AM</option>
+                  <option value="ten30AM">10:30AM</option>
+                </select>              </div>
+              </div>
+              <div class="row">
+                <div class="submit-button">
+                  <input type="submit" class="btn btn-primary btn-sm" value="Add">
+                </div>
+              </div>
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<script> function createMap() {
+  var myLatLong = new google.maps.LatLng(40.705189,-74.009209);
+  var mapOptions = {
+    center: myLatLong,
+    zoom:16,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var mapCanvas = document.getElementById('map');
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+
+  return map;
+}
+
+function addMarker(map, markerCoords, markerTitle){
+  var marker = new google.maps.Marker({position:markerCoords, title:markerTitle});
+  marker.setMap(map);
+}
+
+
+$(document).ready(function(){
+  var map = createMap();
+  var LatLng;
+  {% for hotel in hotels%}
+  LatLng = new google.maps.LatLng({{hotel.place[0].location[0]}}, {{hotel.place[0].location[1]}} );
+    addMarker(map, LatLng, "{{hotel.name}}" );
+  {% endfor %}
+})
+
+
+
+
+
+</script>
+
+
+
+
+{% endblock %}

@@ -17,11 +17,17 @@
 #hotel .hotel-name {
   font-weight: bold; }
 
-#hotel .show-on-map {
-  float: right; }
-
 #add-activities .row {
   margin: 15px 0; }
 
 #add-activities select {
+  width: 100%; }
+
+#add-activities .submit-button {
+  float: right;
+  margin: 0 30px; }
+
+#map {
+  display: block;
+  height: 500px;
   width: 100%; }
